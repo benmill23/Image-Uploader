@@ -2,7 +2,7 @@ import { useImages } from '../../hooks/useImages';
 import ImageCard from './ImageCard';
 
 export default function ImageGallery() {
-  const { images, loading, error } = useImages();
+  const { images, loading, error, refetch } = useImages();
 
   if (loading) {
     return (
@@ -47,7 +47,7 @@ export default function ImageGallery() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {images.map((image) => (
-        <ImageCard key={image.id} image={image} />
+        <ImageCard key={image.id} image={image} onDelete={refetch} />
       ))}
     </div>
   );
